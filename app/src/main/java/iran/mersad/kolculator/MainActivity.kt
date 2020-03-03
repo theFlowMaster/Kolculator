@@ -17,6 +17,7 @@ package iran.mersad.kolculator
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
+import kotlin.properties.Delegates
 import kotlin.text.Regex
 
 class MainActivity : AppCompatActivity() {
@@ -58,55 +59,61 @@ class MainActivity : AppCompatActivity() {
         var dovomi:Double = 9.8
         var amalvand:Any = "*"
         var matn = vorodi.text
+        var error:Boolean = false
 
         // Codes
 
 		//when run button clicked :
         run.setOnClickListener {
+            error = false
             try {
-				// find operator and operand with regex
+                // find operator and operand with regex
                 amalvand = regex.find(matn)!!.groups[2]!!.value
                 avali = regex.find(matn)!!.groups[1]!!.value.toDouble()
                 dovomi = regex.find(matn)!!.groups[3]!!.value.toDouble()
-            }
-            catch(e:Exception){
+            } catch (e: Exception) {
                 maketoast("Error ! Input is invalid Bro !")
+                error = true
             }
-			// diagnosis the operator
+            // diagnosis the operator
             try {
                 when (amalvand) {
                     "*" -> javab = avali * dovomi
                     "+" -> javab = avali + dovomi
                     "-" -> javab = avali - dovomi
                     "/" -> javab = avali / dovomi
-                    else -> maketoast("Error ! the operator is invallid Bro !")
+                    else -> {
+                        maketoast("Error ! the operator is invallid Bro !")
+                        error = true
+                    }
                 }
-            }
-            catch(e:Exception){
+            } catch (e: Exception) {
                 maketoast("Error !!")
             }
-			
-			// find floats
-            try{
+
+            // find floats
+            try {
                 pasokh = doubleregex.find(javab.toString())!!.groups[1]!!.value.toInt()
+            } catch (e: Exception) {
+                maketoast("Error !!!!")
+                error = true
             }
-            catch(e:Exception){
-            }
-            try{
-				// if answer was not float :
-                if (pasokh == 0){
-                    matn.clear()
-                    matn.append(javab.toInt().toString())
+            if(!error) {
+                try {
+                    // if answer was not float :
+                    if (pasokh == 0) {
+                        matn.clear()
+                        matn.append(javab.toInt().toString())
+                    }
+
+                    //if answer was float :
+                    else {
+                        matn.clear()
+                        matn.append(javab.toString())
+                    }
+                } catch (e: Exception) {
+                    maketoast("Error!")
                 }
-				
-				//if answer was float :
-                else{
-                    matn.clear()
-                    matn.append(javab.toString())
-                }
-            }
-            catch(e:Exception){
-                maketoast("Error!")
             }
         }
 
