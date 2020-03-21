@@ -6,14 +6,16 @@
 | Author : Mersad Akbari :)
 | 2019 DEC 31
 |______________________________________________
-|
-| Content me:
-|     Gmail       : Mersad23Akbari@gmail.com
-|     GitHub      : MersadAkbari
+| Wanna chat with me :D
+|     Gmail : Mersad23Akbari@gmail.com
+|______________________________________________
+| Wanna see my opensource projects ?
+|     GitHub : MersadAkbari
 |____________________________________________*/
 
 package iran.mersad.kolculator
 
+// imports :
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
@@ -61,7 +63,7 @@ class MainActivity : AppCompatActivity() {
         var matn = vorodi.text
         var error:Boolean = false
 
-        // Codes
+    // Codes :
 
 		//when run button clicked :
         run.setOnClickListener {
@@ -177,6 +179,7 @@ class MainActivity : AppCompatActivity() {
             }
 
         }
+        // when eraser button clicked long :
         pak.setOnLongClickListener {
             try{
                 var ghabli:String = matn.toString()
@@ -189,3 +192,4 @@ class MainActivity : AppCompatActivity() {
         }
     }
 }
+//Easy Easy , Tamam Tamam :)
