@@ -3,7 +3,7 @@
 
 ## How to Use :
    #### Use this command in terminal to download this repository :
-	git clone https://github.com/MersadAkbari/DataTypes
+	git clone https://github.com/MersadAkbari/Kolculator
    #### then open this project in android studio
 
  Author : MersadAkbari :)
