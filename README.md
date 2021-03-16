@@ -1,4 +1,4 @@
-## Kolculator
+## Kolculator (Kotlin Calculator)
 #### a simple calculator for android with kotlin :)
 
 ## How to Use :
